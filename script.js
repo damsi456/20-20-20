@@ -4,7 +4,7 @@ let intervalId = null;
 
 const timerElement = document.getElementById("timer");
 
-function updateTimer() {
+function updateWorkTimer() {
     const minutes = Math.floor(time / 60);
     let seconds = time % 60;
 
@@ -18,20 +18,39 @@ function updateTimer() {
         intervalId = null;
         time = 0;
         timerElement.innerHTML = '00 : 00';
-    } 
+        document.getElementById('start-btn').classList.remove('hidden');
+        document.getElementById('pause-btn').classList.add('hidden');
+    }
 }
 
 function startTimer() {
     if (intervalId !== null) return;
-    intervalId = setInterval(updateTimer, 1000);
+    document.getElementById('start-btn').classList.add('hidden');
+    document.getElementById('pause-btn').classList.remove('hidden');
+    intervalId = setInterval(updateWorkTimer, 1000);
+}
+
+function pauseTimer() {
+    if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+        document.getElementById('start-btn').classList.remove('hidden');
+        document.getElementById('pause-btn').classList.add('hidden');
+        console.log("Timer paused.");
+    }
 }
 
 function resetTimer() {
-    clearInterval(intervalId);
+    if (intervalId) {
+        clearInterval(intervalId);
+    }
     intervalId = null;
     time = startingMinutes * 60;
     timerElement.innerHTML = `${startingMinutes} : 00`
+    document.getElementById('start-btn').classList.remove('hidden');
+    document.getElementById('pause-btn').classList.add('hidden');
 }
 
 document.getElementById("start-btn").onclick = startTimer;
 document.getElementById("reset-btn").onclick = resetTimer;
+document.getElementById("pause-btn").onclick = pauseTimer;
