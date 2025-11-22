@@ -38,16 +38,18 @@
                 <p class="text-base sm:text-lg font-semibold text-blue-700 tracking-wide">Work Time</p> 
             </div>
             <div class="flex flex-col gap-1 items-center">
-                <p class="text-6xl sm:text-7xl font-mono font-bold text-cyan-800">20 : 00</p>
+                <p id="timer" class="text-6xl sm:text-7xl font-mono font-bold text-cyan-800">20 : 00</p>
                 <p class="uppercase text-gray-500 text-sm tracking-wide">Time to focus</p>
             </div>
             <div class="flex flex-row gap-4 sm:gap-6 text-lg sm:text-xl">
                 <button type="button"
-                        class="text-white bg-cyan-700 hover:bg-cyan-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 rounded-xl py-2 px-10 sm:px-14 font-medium transition">
+                        id="start-btn"
+                        class="text-white bg-cyan-700 hover:bg-cyan-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 rounded-xl py-2 px-10 sm:px-14 font-medium transition cursor-pointer">
                     Start
                 </button>
                 <button type="button"
-                        class="border border-gray-400 hover:border-gray-500 text-gray-700 hover:text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 rounded-xl py-2 px-10 sm:px-14 font-medium transition">
+                        id="reset-btn"
+                        class="border border-gray-400 hover:border-gray-500 text-gray-700 hover:text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 rounded-xl py-2 px-10 sm:px-14 font-medium transition cursor-pointer">
                     Reset
                 </button>
             </div>
@@ -90,5 +92,6 @@
             </div>
         </section>
     </main>
+    <script src="./script.js"></script>
 </body>
 </html>
