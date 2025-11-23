@@ -1,4 +1,4 @@
-const startingMinutes = 1;
+const startingMinutes = 20;
 const breakTime = 20; // seconds
 let time = startingMinutes * 60;
 let intervalId = null;
@@ -12,9 +12,7 @@ function updateTimer() {
     const minutes = Math.floor(time / 60);
     let seconds = time % 60;
 
-    seconds = seconds < 10 ? '0' + seconds : seconds;
-
-    timerElement.innerHTML = `${minutes} : ${seconds}`;
+    timerElement.innerHTML = `${minutes < 10 ? '0' + minutes : minutes } : ${seconds < 10 ? '0' + seconds : seconds}`;
     time--;
 
     if (time < 0) {
@@ -26,6 +24,7 @@ function updateTimer() {
             isWorkTime = false;
             time = breakTime;
 
+            document.getElementById('end-time-audio').play();
             document.querySelector('.bg-blue-100 p').textContent = 'Break Time';
             document.querySelector('.bg-blue-100').className = 'bg-green-100 rounded-full py-2 px-5';
             document.querySelector('.text-blue-700').className = 'text-green-700 font-semibold text-base sm:text-lg tracking-wide';
@@ -40,6 +39,7 @@ function updateTimer() {
             isWorkTime = true;
             time = startingMinutes * 60 // Set to work time again
             
+            document.getElementById('end-time-audio').play();
             document.querySelector('.bg-green-100 p').textContent = 'Work Time';
             document.querySelector('.bg-green-100').className = 'bg-blue-100 rounded-full py-2 px-5';
             document.querySelector('.text-green-700').className = 'text-blue-700 font-semibold text-base sm:text-lg tracking-wide';
